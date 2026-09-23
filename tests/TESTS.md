@@ -167,7 +167,7 @@ Resultado Esperado:
 - Apenas um registro persistido no banco.
 - Segunda requisição retorna 400 Bad Request com mensagem "CPF já cadastrado".
 
-### CT15 - Login com Senha Inválida
+### CT14 - Login com Senha Inválida
 - Nível do Teste: Sistema (End-to-End / Caixa Preta)
 - Pré-condição: Usuário cadastrado com login válido (email: teste@logitech.com, senha correta 123456).
 Passos de Execução:
@@ -179,10 +179,39 @@ Resultado Esperado:
 - Nenhum token de autenticação gerado.
 
 ### Matriz de Rastreabilidade
-ID DO TESTE  | REQUISITO ASSOCIADO           | GARGALO POTENCIAL                           | TIPO DE TESTE              | NÍVEL
-CT03         | REQ-01 (consulta de Motorista)| consulta de motorista existente             | funcional / caixa preta    | sistema
-CT05         | REQ-02 (cadastro de Veículo)  | dados obrigatórios inválidos ou incompletos | funcional / caixa preta    | sistema
-CT09         | REQ-03 (consulta de Entrega)  | consulta de entrega existente               | funcional / caixa preta    | sistema
-CT13         | REQ-05 (cálculo de frete)     | distância negativa                          | estrutural / caixa branca  | unitário
-CT14         | REQ-01 (cadastro Motorista)   | concorrência no CPF                         | funcional / caixa preta    | integração
-CT15         | REQ-02 (autenticação Usuário) | senha inválida                              | funcional / caixa preta    | sistema
+
+### ID DO TESTE: CT03
+REQUISITO ASSOCIADO: REQ-01 (consulta de Motorista)
+GARGALO POTENCIAL: consulta de motorista existente 
+TIPO DE TESTE: funcional / caixa preta
+NÍVEL: sistema
+
+### ID DO TESTE: CT05
+REQUISITO ASSOCIADO: REQ-02 (cadastro de Veículo)
+GARGALO POTENCIAL: dados obrigatórios inválidos ou incompletos
+TIPO DE TESTE: funcional / caixa preta
+NÍVEL: sistema
+
+### ID DO TESTE: CT09
+REQUISITO ASSOCIADO: REQ-03 (consulta de Entrega)
+GARGALO POTENCIAL: consulta de entrega existente 
+TIPO DE TESTE: funcional / caixa preta
+NÍVEL: sistema
+
+### ID DO TESTE: CT12
+REQUISITO ASSOCIADO: REQ-05 (cálculo de frete)
+GARGALO POTENCIAL: distância negativa
+TIPO DE TESTE: estrutural / caixa branca
+NÍVEL: unitário
+
+### ID DO TESTE: CT13
+REQUISITO ASSOCIADO: REQ-01 (cadastro Motorista)  
+GARGALO POTENCIAL: concorrência no CPF 
+TIPO DE TESTE: funcional / caixa preta
+NÍVEL: integração
+
+### ID DO TESTE: CT14
+REQUISITO ASSOCIADO: 
+GARGALO POTENCIAL: 
+TIPO DE TESTE: funcional / caixa preta
+NÍVEL: sistema
