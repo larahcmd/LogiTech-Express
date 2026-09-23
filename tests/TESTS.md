@@ -72,7 +72,19 @@ Resultado Esperado:
 - Apenas um registro persistido no banco.
 - Segunda requisição retorna 400 Bad Request com mensagem "CPF já cadastrado".
 
+### CT15 - Login com Senha Inválida
+- Nível do Teste: Sistema (End-to-End / Caixa Preta)
+- Pré-condição: Usuário cadastrado com login válido (email: teste@logitech.com, senha correta 123456).
+Passos de Execução:
+- Enviar requisição POST /login com o payload acima.
+- Aguardar resposta da API.
+Resultado Esperado:
+- Status Code: 401 Unauthorized
+- Mensagem: "Credenciais inválidas"
+- Nenhum token de autenticação gerado.
+
 ### Matriz de Rastreabilidade
-ID DO TESTE  | REQUISITO ASSOCIADO          | GARGALO POTENCIAL   | TIPO DE TESTE              | NÍVEL
-CT13         | REQ-05 (cálculo de frete)    | distância negativa  | estrutural / caixa branca  | unitário
-CT14         | REQ-01 (cadastro Motorista)  | concorrência no CPF | funcional / caixa preta    | integração
+ID DO TESTE  | REQUISITO ASSOCIADO           | GARGALO POTENCIAL   | TIPO DE TESTE              | NÍVEL
+CT13         | REQ-05 (cálculo de frete)     | distância negativa  | estrutural / caixa branca  | unitário
+CT14         | REQ-01 (cadastro Motorista)   | concorrência no CPF | funcional / caixa preta    | integração
+CT15         | REQ-02 (autenticação Usuário) | senha inválida      | funcional / caixa preta    | sistema
