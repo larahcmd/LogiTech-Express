@@ -51,3 +51,28 @@
 ### Teste 11 - Arquivo .env
 - Verificar se o arquivo .env está protegido pelo .gitignore.
 - Resultado esperado: o arquivo .env não deve ser enviado ao GitHub.
+
+### CT12 - Cálculo de Frete com Distância Negativa
+- Nível do Teste: Unitário (Service / Caixa Branca)
+- Pré-condição: Função calcularFrete(distancia, peso) disponível na camada Service.
+Passos de Execução:
+- Invocar a função calcularFrete(-50, 100).
+- Monitorar execução da lógica.
+Resultado Esperado:
+- Exceção: InvalidDistanceException
+- Nenhum cálculo realizado.
+
+### CT13 - Concorrência no Cadastro de Motorista
+- Nível do Teste: Integração (Repository / Banco de Dados)
+- Pré-condição: Banco de dados de teste ativo e tabela motoristas vazia.
+Passos de Execução:
+- Disparar duas requisições simultâneas POST /motoristas com o mesmo payload.
+- Aguardar resposta da API.
+Resultado Esperado:
+- Apenas um registro persistido no banco.
+- Segunda requisição retorna 400 Bad Request com mensagem "CPF já cadastrado".
+
+### Matriz de Rastreabilidade
+ID DO TESTE  | REQUISITO ASSOCIADO          | GARGALO POTENCIAL   | TIPO DE TESTE              | NÍVEL
+CT13         | REQ-05 (cálculo de frete)    | distância negativa  | estrutural / caixa branca  | unitário
+CT14         | REQ-01 (cadastro Motorista)  | concorrência no CPF | funcional / caixa preta    | integração
