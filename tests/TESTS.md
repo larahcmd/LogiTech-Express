@@ -2,55 +2,150 @@
 
 ## 1. Testes de Motoristas
 
-### Teste 1 - Cadastrar motorista
-- Informar todos os dados obrigatórios.
-- Resultado esperado: motorista cadastrado com sucesso.
+### CT01 - Cadastro de Motorista com Dados Obrigatórios
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e usuário com permissão para cadastrar motoristas.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de motorista.
+Informar todos os dados obrigatórios.
+Enviar o formulário.
+Aguardar resposta do sistema.
+Resultado Esperado:
+Status Code: 201 Created.
+Motorista cadastrado com sucesso.
+Dados do motorista persistidos no banco de dados.
 
-### Teste 2 - Cadastrar motorista sem nome
-- Deixar o campo nome vazio.
-- Resultado esperado: sistema deve informar que o nome é obrigatório.
+### CT02 - Cadastro de Motorista sem Nome
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e usuário com permissão para cadastrar motoristas.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de motorista.
+Deixar o campo nome vazio.
+Informar os demais dados obrigatórios.
+Enviar o formulário.
+Resultado Esperado:
+Status Code: 400 Bad Request.
+Mensagem informando que o nome é obrigatório.
+Motorista não deve ser cadastrado no banco de dados.
 
-### Teste 3 - Consultar motorista
-- Informar o ID de um motorista existente.
-- Resultado esperado: sistema deve apresentar os dados do motorista.
+### CT03 - Consulta de Motorista Existente
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Existir um motorista cadastrado no sistema.
+Passos de Execução:
+Informar o ID de um motorista existente.
+Enviar a requisição de consulta.
+Aguardar resposta da API.
+Resultado Esperado:
+Status Code: 200 OK.
+Sistema apresenta os dados do motorista informado.
+Dados retornados correspondem ao motorista consultado.
 
-### Teste 4 - Consultar motorista inexistente
-- Informar um ID que não existe.
-- Resultado esperado: sistema deve informar que o motorista não foi encontrado.
+### CT04 - Consulta de Motorista Inexistente
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e não existir motorista com o ID informado.
+Passos de Execução:
+Informar um ID de motorista inexistente.
+Enviar a requisição de consulta.
+Aguardar resposta da API.
+Resultado Esperado:
+Status Code: 404 Not Found.
+Mensagem: "Motorista não encontrado".
+Nenhum dado de motorista deve ser retornado.
 
-## 2. Testes de Veículos
+### Testes de Veículos
 
-### Teste 5 - Cadastrar veículo
-- Informar placa, modelo, tipo e status.
-- Resultado esperado: veículo cadastrado com sucesso.
+### CT05 - Cadastro de Veículo com Dados Obrigatórios
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e usuário com permissão para cadastrar veículos.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de veículo.
+Informar placa, modelo, tipo e status válidos.
+Enviar o formulário.
+Aguardar resposta do sistema.
+Resultado Esperado:
+Status Code: 201 Created.
+Veículo cadastrado com sucesso.
+Dados do veículo persistidos no banco de dados.
 
-### Teste 6 - Placa inválida
-- Informar uma placa inválida.
-- Resultado esperado: sistema deve rejeitar o cadastro.
+### CT06 - Cadastro de Veículo com Placa Inválida
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e usuário com permissão para cadastrar veículos.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de veículo.
+Informar uma placa em formato inválido.
+Informar os demais dados obrigatórios.
+Enviar o formulário.
+Resultado Esperado:
+Status Code: 400 Bad Request.
+Sistema informa que a placa é inválida.
+Veículo não deve ser cadastrado no banco de dados.
 
-## 3. Testes de Entregas
+### Testes de Entregas
 
-### Teste 7 - Cadastrar entrega
-- Informar origem, destino, data, motorista e veículo.
-- Resultado esperado: entrega cadastrada com sucesso.
+### CT07 - Cadastro de Entrega com Dados Obrigatórios
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Existir motorista e veículo cadastrados e disponíveis para associação à entrega.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de entrega.
+Informar origem, destino, data, motorista e veículo.
+Enviar o formulário.
+Aguardar resposta do sistema.
+Resultado Esperado:
+Status Code: 201 Created.
+Entrega cadastrada com sucesso.
+Dados da entrega persistidos no banco de dados.
 
-### Teste 8 - Entrega sem dados obrigatórios
-- Deixar um dos campos obrigatórios vazio.
-- Resultado esperado: sistema deve informar o erro.
+### CT08 - Cadastro de Entrega sem Dados Obrigatórios
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Sistema disponível e usuário com permissão para cadastrar entregas.
+Passos de Execução:
+Acessar a funcionalidade de cadastro de entrega.
+Deixar um dos campos obrigatórios vazio.
+Informar os demais dados necessários.
+Enviar o formulário.
+Resultado Esperado:
+Status Code: 400 Bad Request.
+Sistema informa qual campo obrigatório não foi preenchido.
+Entrega não deve ser cadastrada no banco de dados.
 
-### Teste 9 - Consultar entrega
-- Informar o ID de uma entrega existente.
-- Resultado esperado: sistema deve apresentar os dados da entrega.
+### CT09 - Consulta de Entrega Existente
+Nível do Teste: Sistema (End-to-End / Caixa Preta)
+Pré-condição: Existir uma entrega cadastrada no sistema.
+Passos de Execução:
+Informar o ID de uma entrega existente.
+Enviar a requisição de consulta.
+Aguardar resposta da API.
+Resultado Esperado:
+Status Code: 200 OK.
+Sistema apresenta os dados da entrega.
+Dados retornados correspondem à entrega consultada.
 
-## 4. Testes de Segurança
+### Testes de Segurança
 
-### Teste 10 - Proteger informações confidenciais
-- Verificar se senhas e tokens não estão diretamente no código.
-- Resultado esperado: informações confidenciais devem estar protegidas por variáveis de ambiente.
+### CT10 - Proteção de Informações Confidenciais
+Nível do Teste: Segurança (Análise Estática / Caixa Branca)
+Pré-condição: Código-fonte da aplicação disponível para análise.
+Passos de Execução:
+Realizar uma análise do código-fonte.
+Verificar arquivos de configuração e variáveis utilizadas pela aplicação.
+Procurar senhas, tokens, chaves de API ou outras credenciais diretamente declaradas no código.
+Resultado Esperado:
+Nenhuma senha, token ou chave de acesso deve estar diretamente exposta no código-fonte.
+Informações confidenciais devem ser obtidas por meio de variáveis de ambiente.
+Nenhuma credencial deve ser versionada no repositório.
 
-### Teste 11 - Arquivo .env
-- Verificar se o arquivo .env está protegido pelo .gitignore.
-- Resultado esperado: o arquivo .env não deve ser enviado ao GitHub.
+### CT11 - Proteção do Arquivo .env pelo .gitignore
+Nível do Teste: Segurança (Integração / Caixa Branca)
+Pré-condição: Projeto versionado com Git e arquivo .env configurado para armazenar informações confidenciais.
+Passos de Execução:
+Acessar o arquivo .gitignore do projeto.
+Verificar se o arquivo .env está listado nas regras de exclusão.
+Executar git status para verificar os arquivos não rastreados.
+Verificar se o .env não está sendo enviado para o repositório.
+Resultado Esperado:
+O arquivo .env deve estar presente no .gitignore.
+O arquivo .env não deve aparecer como arquivo a ser versionado.
+Informações confidenciais não devem ser enviadas ao GitHub.
 
 ### CT12 - Cálculo de Frete com Distância Negativa
 - Nível do Teste: Unitário (Service / Caixa Branca)
@@ -84,7 +179,10 @@ Resultado Esperado:
 - Nenhum token de autenticação gerado.
 
 ### Matriz de Rastreabilidade
-ID DO TESTE  | REQUISITO ASSOCIADO           | GARGALO POTENCIAL   | TIPO DE TESTE              | NÍVEL
-CT13         | REQ-05 (cálculo de frete)     | distância negativa  | estrutural / caixa branca  | unitário
-CT14         | REQ-01 (cadastro Motorista)   | concorrência no CPF | funcional / caixa preta    | integração
-CT15         | REQ-02 (autenticação Usuário) | senha inválida      | funcional / caixa preta    | sistema
+ID DO TESTE  | REQUISITO ASSOCIADO           | GARGALO POTENCIAL                           | TIPO DE TESTE              | NÍVEL
+CT03         | REQ-01 (consulta de Motorista)| consulta de motorista existente             | funcional / caixa preta    | sistema
+CT05         | REQ-02 (cadastro de Veículo)  | dados obrigatórios inválidos ou incompletos | funcional / caixa preta    | sistema
+CT09         | REQ-03 (consulta de Entrega)  | consulta de entrega existente               | funcional / caixa preta    | sistema
+CT13         | REQ-05 (cálculo de frete)     | distância negativa                          | estrutural / caixa branca  | unitário
+CT14         | REQ-01 (cadastro Motorista)   | concorrência no CPF                         | funcional / caixa preta    | integração
+CT15         | REQ-02 (autenticação Usuário) | senha inválida                              | funcional / caixa preta    | sistema
